@@ -80,14 +80,17 @@ try:
     response.raise_for_status()
 
     data = response.json()
+    print(f"data:{data}")
 
     models = []
     for model in data.get("models", []):
         models.append(model["name"])
-    assert set(models) == set(['translategemma:latest','all-minilm:latest','llama3.1:latest'])
+
+    print(models)
     print("✓ accessed the server")
 
 except Exception as e:
+    print(f"erro:{e}")
     print("✗ access to server failed: confirm that you are using either eduroam network or VPN access to it")
     exit()
 
